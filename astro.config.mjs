@@ -56,6 +56,7 @@ export default defineConfig({
           collapsed: true,
           label: "Start",
           items: startConfig.sections.map((section) => ({
+            collapsed: true,
             label: section.label,
             items: section.frameworks[0].children.map((c) => ({
               link: `start/${stripPrefix(c.to)}`,
@@ -67,6 +68,7 @@ export default defineConfig({
           collapsed: true,
           label: "Router",
           items: routerConfig.sections.map((section) => ({
+            collapsed: true,
             label: section.label,
             items: [
               ...section.children,
