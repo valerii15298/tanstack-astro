@@ -50,7 +50,26 @@ function fixLinks(filePath: string): void {
   writeFileSync(filePath, newContent, "utf8");
 }
 
+function convertCallouts(filePath: string): void {
+  const content = readFileSync(filePath, "utf8");
+  const newContent = content.replace(
+    /^> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\n((?:^>.*\n?)*)/gim,
+    (_match, type: string, body: string) => {
+      const lines = body
+        .split("\n")
+        .filter((line) => line.startsWith(">"))
+        .map((line) => line.replace(/^>\s?/, ""));
+      return `:::${type.toLowerCase()}\n${lines.join("\n")}\n:::\n`;
+    },
+  );
+  if (newContent !== content) {
+    writeFileSync(filePath, newContent, "utf8");
+    console.log(`Converted callouts in ${filePath}`);
+  }
+}
+
 const filePaths = getMarkdownFiles(docsDir);
 
 filePaths.forEach(addFrontmatter);
 filePaths.forEach(fixLinks);
+filePaths.forEach(convertCallouts);
