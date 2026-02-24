@@ -14,7 +14,10 @@ export default defineConfig({
           href: "https://github.com/withastro/starlight",
         },
       ],
-      sidebar: [],
+      sidebar: [
+        { autogenerate: { directory: "start" }, label: "Start" },
+        { autogenerate: { directory: "router" }, label: "Router" },
+      ],
     }),
   ],
 });
