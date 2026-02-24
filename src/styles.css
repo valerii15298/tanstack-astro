@@ -1,0 +1,26 @@
+.sl-container {
+    margin: 0;
+    max-width: 100%;
+    width: auto;
+  }
+
+@media (min-width: 72rem) {
+  .main-pane {
+    flex: 1;
+    main {
+      max-width: 900px;
+      margin-inline: auto;
+    }
+  }
+
+  .right-sidebar-container {
+    max-width: 400px;
+  }
+
+  .right-sidebar-container .right-sidebar {
+    width: inherit;
+    max-width: inherit;
+    min-width: fit-content;
+    position: sticky;
+  }
+}

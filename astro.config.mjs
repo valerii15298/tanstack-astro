@@ -41,6 +41,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "My Docs",
+      customCss: ["/src/styles.css"],
       social: [
         {
           icon: "github",
