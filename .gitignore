@@ -19,4 +19,6 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-src/content/docs
+
+src/content/docs/start
+src/content/docs/router

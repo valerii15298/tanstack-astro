@@ -41,7 +41,7 @@ const stripPrefix = (str) =>
 export default defineConfig({
   integrations: [
     starlight({
-      title: "My Docs",
+      title: "TanStack Start Docs",
       customCss: ["/src/styles.css"],
       // plugins: [starlightLinksValidator({errorOnRelativeLinks: false})],
       social: [
