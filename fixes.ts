@@ -39,7 +39,9 @@ const replacements = {
   "/start/latest/docs/framework/react": "/start",
   "/start/latest/docs/framework/solid": "/start",
 
+  "]: /": "]: /tanstack-astro/",
   ".md)": ")",
+  "](/": "](/tanstack-astro/",
 };
 function fixLinks(filePath: string): void {
   const content = readFileSync(filePath, "utf8");
