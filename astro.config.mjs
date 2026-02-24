@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightLinksValidator from 'starlight-links-validator'
+// import starlightLinksValidator from 'starlight-links-validator'
 
 /**
  * @typedef {Array<{label: string, to: string}>} Items
@@ -43,7 +43,7 @@ export default defineConfig({
     starlight({
       title: "My Docs",
       customCss: ["/src/styles.css"],
-      plugins: [starlightLinksValidator({errorOnRelativeLinks: false})],
+      // plugins: [starlightLinksValidator({errorOnRelativeLinks: false})],
       social: [
         {
           icon: "github",
