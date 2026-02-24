@@ -39,6 +39,8 @@ const stripPrefix = (str) =>
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://valerii15298.github.io",
+	base: "/tanstack-astro",
   integrations: [
     starlight({
       title: "TanStack Start Docs",
