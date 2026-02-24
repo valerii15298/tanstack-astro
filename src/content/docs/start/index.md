@@ -1,5 +1,0 @@
----
-title: Start
----
-
-# Start
