@@ -13,6 +13,10 @@
     }
   }
 
+  div.main-pane:first-child > main {
+    max-width: 1300px;
+  }
+
   .right-sidebar-container {
     max-width: 400px;
   }
