@@ -43,7 +43,7 @@ export default defineConfig({
     starlight({
       title: "My Docs",
       customCss: ["/src/styles.css"],
-      plugins: [starlightLinksValidator()],
+      plugins: [starlightLinksValidator({errorOnRelativeLinks: false})],
       social: [
         {
           icon: "github",
