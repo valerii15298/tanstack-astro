@@ -1,0 +1,19 @@
+---
+title: '404'
+head:
+  - tag: script
+    content: |
+      console.log("Not Found")
+      const key = "redirected"
+      const url = new URL(location.href)
+
+      if (!url.searchParams.has(key) && url.pathname.endsWith("/")) {
+        url.pathname = url.pathname.slice(0, -1)
+        url.searchParams.set(key, 1)
+        location.href = url.toString()
+      }
+hero:
+  title: '404'
+  tagline: Page not found. Check the URL or try using the search bar.
+---
+
