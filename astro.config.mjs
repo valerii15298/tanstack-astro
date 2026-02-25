@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import { visit } from "unist-util-visit";
 // import starlightLinksValidator from 'starlight-links-validator'
 
 /**
@@ -41,10 +42,26 @@ const stripPrefix = (str) =>
 export default defineConfig({
   site: "https://valerii15298.github.io",
   build: {
-    format: "preserve"
+    format: "preserve",
+  },
+  markdown: {
+    rehypePlugins: [
+      function rehypeFixRelativeLinks() {
+        return (tree) => {
+          visit(tree, "element", (node) => {
+            if (node.tagName === "a" && node.properties?.href) {
+              const href = node.properties.href;
+              if (typeof href === "string") {
+                node.properties.href = href.toLowerCase();
+              }
+            }
+          });
+        };
+      },
+    ],
   },
   // trailingSlash: "always",
-	base: "/tanstack-astro",
+  base: "/tanstack-astro",
   integrations: [
     starlight({
       title: "TanStack Start Docs",
