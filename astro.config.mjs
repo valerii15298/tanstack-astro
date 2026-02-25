@@ -41,6 +41,7 @@ const stripPrefix = (str) =>
 // https://astro.build/config
 export default defineConfig({
   site: "https://valerii15298.github.io",
+  devToolbar: { enabled: false },
   build: {
     format: "preserve",
   },
@@ -66,6 +67,37 @@ export default defineConfig({
     starlight({
       title: "TanStack Start Docs",
       customCss: ["/src/styles.css"],
+      head: [
+        {
+          tag: "script",
+          content: `
+            (() => {
+              const threshold = 10;
+              const mql = window.matchMedia('(max-width: 50em)');
+              const root = document.documentElement;
+              const attr = 'data-bottom-bar-hidden';
+
+              let lastY = 0;
+              let latestY = 0;
+              let ticking = false;
+
+              const update = () => {
+                ticking = false;
+                if (!mql.matches) { root.removeAttribute(attr); return; }
+                const y = latestY;
+                if (y - lastY > threshold) root.setAttribute(attr, '');
+                else if (lastY - y > threshold) root.removeAttribute(attr);
+                lastY = y;
+              };
+
+              window.addEventListener('scroll', () => {
+                latestY = window.scrollY;
+                if (!ticking) { ticking = true; requestAnimationFrame(update); }
+              }, { passive: true });
+            })();
+          `,
+        },
+      ],
       // plugins: [starlightLinksValidator({errorOnRelativeLinks: false})],
       social: [
         {
