@@ -4,6 +4,84 @@
     width: auto;
   }
 
+/* ===== Mobile bottom navigation bar ===== */
+@media (max-width: 50em) {
+  #starlight__sidebar.sidebar-pane .sidebar-content  {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  /* Move the fixed header from top to bottom */
+  .page > header.header {
+    inset-block-start: auto;
+    inset-block-end: var(--sl-mobile-toc-height);
+    border-bottom: none;
+    border-top: 1px solid var(--sl-color-hairline-shade);
+    transition: transform 0.3s ease;
+  }
+
+  /* Move the fixed menu button to align with the bottom header */
+  starlight-menu-button > button {
+    top: auto;
+    bottom: calc(
+      var(--sl-mobile-toc-height) +
+        (var(--sl-nav-height) - var(--sl-menu-button-size)) / 2
+    );
+    transition: transform 0.3s ease;
+  }
+
+  /* Move the mobile "On this page" TOC to the very bottom */
+  mobile-starlight-toc > nav {
+    top: auto;
+    bottom: 0;
+    border-top: none;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    /* Raise above header when dropdown is open so items aren't hidden behind it */
+    z-index: calc(var(--sl-z-index-navbar) + 1);
+    transition: transform 0.3s ease;
+  }
+
+  /* Hide bottom bar when scrolling down */
+  html[data-bottom-bar-hidden] .page > header.header,
+  html[data-bottom-bar-hidden] starlight-menu-button > button {
+    transform: translateY(calc(var(--sl-nav-height) + var(--sl-mobile-toc-height)));
+  }
+  html[data-bottom-bar-hidden] mobile-starlight-toc > nav {
+    transform: translateY(calc(var(--sl-nav-height) + var(--sl-mobile-toc-height)));
+  }
+
+  /* Make the TOC dropdown expand upward instead of downward */
+  mobile-starlight-toc details {
+    position: relative;
+  }
+  mobile-starlight-toc .dropdown {
+    position: absolute;
+    bottom: 100%;
+    inset-inline: 0;
+    max-height: calc(
+      100vh - var(--sl-nav-height) - var(--sl-mobile-toc-height) - 1rem
+    );
+    overflow-y: auto;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Sidebar panel: fill from top down to bottom bar */
+  .sidebar-pane {
+    inset-block: 0 calc(var(--sl-nav-height) + var(--sl-mobile-toc-height));
+  }
+
+  /* Main content: swap top padding for bottom padding */
+  .main-frame {
+    padding-top: 0;
+    padding-bottom: calc(var(--sl-nav-height) + var(--sl-mobile-toc-height));
+  }
+
+  /* Adjust scroll-padding for anchors */
+  html {
+    scroll-padding-top: 1.5rem;
+  }
+}
+
 @media (min-width: 72rem) {
   .main-pane {
     flex: 1;
