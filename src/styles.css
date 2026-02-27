@@ -9,7 +9,9 @@
   #starlight__sidebar.sidebar-pane .sidebar-content  {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+  }
+  #starlight__sidebar.sidebar-pane .sidebar-content ul.top-level {
+    margin-top: auto;
   }
   /* Move the fixed header from top to bottom */
   .page > header.header {
