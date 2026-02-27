@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import { visit } from "unist-util-visit";
+import mermaid from 'astro-mermaid';
 // import starlightLinksValidator from 'starlight-links-validator'
 
 /**
@@ -64,6 +65,7 @@ export default defineConfig({
   // trailingSlash: "always",
   base: "/tanstack-astro",
   integrations: [
+    mermaid(),
     starlight({
       title: "TanStack Start Docs",
       customCss: ["/src/styles.css"],
