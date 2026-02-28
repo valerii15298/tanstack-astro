@@ -41,6 +41,7 @@ const replacements = {
 
   "]: /": "]: /tanstack-astro/",
   ".md)": ")",
+  ".md#": "#",
   "](/": "](/tanstack-astro/",
 };
 function fixLinks(filePath: string): void {
