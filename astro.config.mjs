@@ -67,6 +67,10 @@ export default defineConfig({
   integrations: [
     mermaid(),
     starlight({
+      tableOfContents: {
+				minHeadingLevel: 1,
+				maxHeadingLevel: 6
+			},
       title: "TanStack Start Docs",
       customCss: ["/src/styles.css"],
       head: [
